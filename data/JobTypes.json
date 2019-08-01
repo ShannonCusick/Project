@@ -1,0 +1,339 @@
+{
+	"Jobtypes": [{
+			"idkey": "1",
+			"building_id": "1",
+			"job_id": "1",
+			"qty": "1",
+			"name": "Mechanic"
+		},
+		{
+			"idkey": "2",
+			"building_id": "2",
+			"job_id": "1",
+			"qty": "1",
+			"name": "Mechanic"
+		},
+		{
+			"idkey": "3",
+			"building_id": "3",
+			"job_id": "2",
+			"qty": "1",
+			"name": "Botanist"
+		},
+		{
+			"idkey": "4",
+			"building_id": "5",
+			"job_id": "3",
+			"qty": "1",
+			"name": "Farmer"
+		},
+		{
+			"idkey": "5",
+			"building_id": "6",
+			"job_id": "4",
+			"qty": "1",
+			"name": "Plumber"
+		},
+		{
+			"idkey": "6",
+			"building_id": "7",
+			"job_id": "1",
+			"qty": "1",
+			"name": "Mechanic"
+		},
+		{
+			"idkey": "7",
+			"building_id": "8",
+			"job_id": "1",
+			"qty": "1",
+			"name": "Mechanic"
+		},
+		{
+			"idkey": "8",
+			"building_id": "9",
+			"job_id": "1",
+			"qty": "1",
+			"name": "Mechanic"
+		},
+		{
+			"idkey": "9",
+			"building_id": "10",
+			"job_id": "5",
+			"qty": "1",
+			"name": "Technician"
+		},
+		{
+			"idkey": "10",
+			"building_id": "11",
+			"job_id": "1",
+			"qty": "1",
+			"name": "Mechanic"
+		},
+		{
+			"idkey": "11",
+			"building_id": "11",
+			"job_id": "5",
+			"qty": "1",
+			"name": "Technician"
+		},
+		{
+			"idkey": "12",
+			"building_id": "12",
+			"job_id": "5",
+			"qty": "1",
+			"name": "Technician"
+		},
+		{
+			"idkey": "13",
+			"building_id": "13",
+			"job_id": "5",
+			"qty": "1",
+			"name": "Technician"
+		},
+		{
+			"idkey": "14",
+			"building_id": "14",
+			"job_id": "6",
+			"qty": "1",
+			"name": "Cook"
+		},
+		{
+			"idkey": "15",
+			"building_id": "14",
+			"job_id": "7",
+			"qty": "1",
+			"name": "Janitor"
+		},
+		{
+			"idkey": "16",
+			"building_id": "14",
+			"job_id": "9",
+			"qty": "1",
+			"name": "Dish Washer"
+		},
+		{
+			"idkey": "17",
+			"building_id": "15",
+			"job_id": "9",
+			"qty": "1",
+			"name": "Dish Washer"
+		},
+		{
+			"idkey": "18",
+			"building_id": "15",
+			"job_id": "6",
+			"qty": "1",
+			"name": "Cook"
+		},
+		{
+			"idkey": "19",
+			"building_id": "15",
+			"job_id": "8",
+			"qty": "1",
+			"name": "Waiter"
+		},
+		{
+			"idkey": "20",
+			"building_id": "16",
+			"job_id": "10",
+			"qty": "1",
+			"name": "Musician"
+		},
+		{
+			"idkey": "21",
+			"building_id": "17",
+			"job_id": "5",
+			"qty": "1",
+			"name": "Technician"
+		},
+		{
+			"idkey": "22",
+			"building_id": "20",
+			"job_id": "5",
+			"qty": "1",
+			"name": "Technician"
+		},
+		{
+			"idkey": "23",
+			"building_id": "21",
+			"job_id": "11",
+			"qty": "1",
+			"name": "Bar Tender"
+		},
+		{
+			"idkey": "24",
+			"building_id": "21",
+			"job_id": "12",
+			"qty": "1",
+			"name": "Barista"
+		},
+		{
+			"idkey": "25",
+			"building_id": "22",
+			"job_id": "7",
+			"qty": "1",
+			"name": "Janitor"
+		},
+		{
+			"idkey": "26",
+			"building_id": "23",
+			"job_id": "5",
+			"qty": "1",
+			"name": "Technician"
+		},
+		{
+			"idkey": "27",
+			"building_id": "24",
+			"job_id": "7",
+			"qty": "1",
+			"name": "Janitor"
+		},
+		{
+			"idkey": "28",
+			"building_id": "25",
+			"job_id": "7",
+			"qty": "1",
+			"name": "Janitor"
+		},
+		{
+			"idkey": "29",
+			"building_id": "26",
+			"job_id": "13",
+			"qty": "1",
+			"name": "Teacher"
+		},
+		{
+			"idkey": "30",
+			"building_id": "27",
+			"job_id": "14",
+			"qty": "1",
+			"name": "Security Officer"
+		},
+		{
+			"idkey": "31",
+			"building_id": "27",
+			"job_id": "15",
+			"qty": "1",
+			"name": "Security Guard"
+		},
+		{
+			"idkey": "32",
+			"building_id": "30",
+			"job_id": "18",
+			"qty": "1",
+			"name": "Navigator"
+		},
+		{
+			"idkey": "33",
+			"building_id": "30",
+			"job_id": "5",
+			"qty": "1",
+			"name": "Technician"
+		},
+		{
+			"idkey": "34",
+			"building_id": "34",
+			"job_id": "19",
+			"qty": "1",
+			"name": "Geologist"
+		},
+		{
+			"idkey": "35",
+			"building_id": "35",
+			"job_id": "22",
+			"qty": "1",
+			"name": "Biologist"
+		},
+		{
+			"idkey": "36",
+			"building_id": "36",
+			"job_id": "20",
+			"qty": "1",
+			"name": "Medical Doctor"
+		},
+		{
+			"idkey": "37",
+			"building_id": "37",
+			"job_id": "21",
+			"qty": "1",
+			"name": "Engineer"
+		},
+		{
+			"idkey": "38",
+			"building_id": "38",
+			"job_id": "1",
+			"qty": "1",
+			"name": "Mechanic"
+		},
+		{
+			"idkey": "39",
+			"building_id": "39",
+			"job_id": "5",
+			"qty": "1",
+			"name": "Technician"
+		},
+		{
+			"idkey": "40",
+			"building_id": "40",
+			"job_id": "1",
+			"qty": "1",
+			"name": "Mechanic"
+		},
+		{
+			"idkey": "41",
+			"building_id": "40",
+			"job_id": "5",
+			"qty": "1",
+			"name": "Technician"
+		},
+		{
+			"idkey": "42",
+			"building_id": "42",
+			"job_id": "23",
+			"qty": "1",
+			"name": "Babysitter"
+		},
+		{
+			"idkey": "43",
+			"building_id": "43",
+			"job_id": "20",
+			"qty": "1",
+			"name": "Medical Doctor"
+		},
+		{
+			"idkey": "44",
+			"building_id": "44",
+			"job_id": "7",
+			"qty": "1",
+			"name": "Janitor"
+		},
+		{
+			"idkey": "45",
+			"building_id": "41",
+			"job_id": "24",
+			"qty": "1",
+			"name": "Artist"
+		},
+		{
+			"idkey": "46",
+			"building_id": "29",
+			"job_id": "16",
+			"qty": "0",
+			"name": "Phsycologist"
+		},
+		{
+			"idkey": "47",
+			"building_id": "29",
+			"job_id": "17",
+			"qty": "0",
+			"name": "Intelligence Officer"
+		},
+		{
+			"idkey": "48",
+			"building_id": "46",
+			"job_id": "5",
+			"qty": "1",
+			"name": "Technician"
+		}
+	]
+}

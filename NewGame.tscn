@@ -1,0 +1,369 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://UI/NewGameContainer.cs" type="Script" id=1]
+[ext_resource path="res://hemihead.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://hemihead84.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/JobName.cs" type="Script" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://UI/Hire1.cs" type="Script" id=6]
+[ext_resource path="res://UI/Hire2.cs" type="Script" id=7]
+[ext_resource path="res://UI/Hire3.cs" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 60
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 22
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 36
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 56
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="NewGameContainer" type="MarginContainer"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1880.0
+margin_bottom = 1040.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1870.0
+margin_bottom = 172.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 359.0
+margin_bottom = 172.0
+
+[node name="sname" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 359.0
+margin_bottom = 87.0
+custom_fonts/font = SubResource( 1 )
+text = "shipname"
+
+[node name="destination" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 91.0
+margin_right = 359.0
+margin_bottom = 172.0
+custom_fonts/font = SubResource( 2 )
+text = "Orbiting Earth, Sol System
+To Kuiper Belt: infinate days
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 363.0
+margin_right = 907.0
+margin_bottom = 172.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_right = 87.0
+margin_bottom = 172.0
+
+[node name="inventory1" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 87.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 3 )
+text = "inventory"
+align = 2
+valign = 1
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_left = 91.0
+margin_right = 178.0
+margin_bottom = 172.0
+
+[node name="inventory2" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer5"]
+margin_right = 87.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 3 )
+text = "inventory"
+align = 2
+valign = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_left = 182.0
+margin_right = 269.0
+margin_bottom = 172.0
+
+[node name="inventory3" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer4"]
+margin_right = 87.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 3 )
+text = "inventory"
+align = 2
+valign = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_left = 273.0
+margin_right = 360.0
+margin_bottom = 172.0
+
+[node name="inventory4" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer3"]
+margin_right = 87.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 3 )
+text = "inventory"
+align = 2
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_left = 364.0
+margin_right = 544.0
+margin_bottom = 172.0
+
+[node name="chars" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 180.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 4 )
+text = "shipchars"
+
+[node name="Screenbox" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 176.0
+margin_right = 1870.0
+margin_bottom = 1030.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+
+[node name="LeftSide" type="VBoxContainer" parent="VBoxContainer/Screenbox"]
+margin_right = 492.0
+margin_bottom = 854.0
+
+[node name="SelectCrew" type="Label" parent="VBoxContainer/Screenbox/LeftSide"]
+margin_right = 492.0
+margin_bottom = 102.0
+custom_fonts/font = ExtResource( 3 )
+text = "Select Crew"
+
+[node name="JobName" type="Label" parent="VBoxContainer/Screenbox/LeftSide"]
+margin_top = 106.0
+margin_right = 492.0
+margin_bottom = 179.0
+custom_fonts/font = SubResource( 5 )
+text = "JobName"
+script = ExtResource( 4 )
+
+[node name="CharName" type="Label" parent="VBoxContainer/Screenbox/LeftSide"]
+visible = false
+margin_top = 183.0
+margin_right = 492.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 5 )
+text = "CharName"
+script = ExtResource( 4 )
+
+[node name="building" type="Label" parent="VBoxContainer/Screenbox/LeftSide"]
+margin_top = 183.0
+margin_right = 492.0
+margin_bottom = 240.0
+custom_fonts/font = SubResource( 6 )
+text = "building description
+"
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Screenbox"]
+margin_left = 502.0
+margin_right = 552.0
+margin_bottom = 854.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Screenbox"]
+margin_left = 562.0
+margin_right = 754.0
+margin_bottom = 854.0
+size_flags_vertical = 3
+custom_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Screenbox/VBoxContainer"]
+margin_right = 192.0
+margin_bottom = 672.0
+custom_constants/separation = 30
+
+[node name="canidate1" type="HBoxContainer" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer"]
+margin_right = 192.0
+margin_bottom = 204.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate1"]
+editor/display_folded = true
+margin_right = 64.0
+margin_bottom = 204.0
+
+[node name="pic1" type="TextureRect" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate1/VBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate1"]
+margin_left = 68.0
+margin_right = 192.0
+margin_bottom = 204.0
+
+[node name="name1" type="Label" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate1/VBoxContainer2"]
+margin_right = 124.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 7 )
+text = "name1"
+
+[node name="traits1" type="Label" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate1/VBoxContainer2"]
+margin_top = 48.0
+margin_right = 124.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 8 )
+text = "traits"
+
+[node name="skill1" type="Label" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate1/VBoxContainer2"]
+margin_top = 89.0
+margin_right = 124.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 8 )
+text = "skill"
+
+[node name="Hire" type="Button" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate1/VBoxContainer2"]
+margin_top = 130.0
+margin_right = 124.0
+margin_bottom = 204.0
+custom_fonts/font = SubResource( 9 )
+text = "Hire"
+align = 2
+script = ExtResource( 6 )
+
+[node name="canidate2" type="HBoxContainer" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer"]
+margin_top = 234.0
+margin_right = 192.0
+margin_bottom = 438.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate2"]
+editor/display_folded = true
+margin_right = 64.0
+margin_bottom = 204.0
+
+[node name="pic1" type="TextureRect" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate2/VBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate2"]
+margin_left = 68.0
+margin_right = 192.0
+margin_bottom = 204.0
+
+[node name="name1" type="Label" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate2/VBoxContainer2"]
+margin_right = 124.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 7 )
+text = "name1"
+
+[node name="traits1" type="Label" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate2/VBoxContainer2"]
+margin_top = 48.0
+margin_right = 124.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 8 )
+text = "traits"
+
+[node name="skill1" type="Label" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate2/VBoxContainer2"]
+margin_top = 89.0
+margin_right = 124.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 8 )
+text = "skill"
+
+[node name="Hire" type="Button" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate2/VBoxContainer2"]
+margin_top = 130.0
+margin_right = 124.0
+margin_bottom = 204.0
+custom_fonts/font = SubResource( 9 )
+text = "Hire"
+align = 2
+script = ExtResource( 7 )
+
+[node name="canidate3" type="HBoxContainer" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer"]
+margin_top = 468.0
+margin_right = 192.0
+margin_bottom = 672.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate3"]
+editor/display_folded = true
+margin_right = 64.0
+margin_bottom = 204.0
+
+[node name="pic1" type="TextureRect" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate3/VBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate3"]
+margin_left = 68.0
+margin_right = 192.0
+margin_bottom = 204.0
+
+[node name="name1" type="Label" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate3/VBoxContainer2"]
+margin_right = 124.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 7 )
+text = "name1"
+
+[node name="traits1" type="Label" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate3/VBoxContainer2"]
+margin_top = 48.0
+margin_right = 124.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 8 )
+text = "traits"
+
+[node name="skill1" type="Label" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate3/VBoxContainer2"]
+margin_top = 89.0
+margin_right = 124.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 8 )
+text = "skill"
+
+[node name="Hire" type="Button" parent="VBoxContainer/Screenbox/VBoxContainer/VBoxContainer/canidate3/VBoxContainer2"]
+margin_top = 130.0
+margin_right = 124.0
+margin_bottom = 204.0
+custom_fonts/font = SubResource( 9 )
+text = "Hire"
+align = 2
+script = ExtResource( 8 )

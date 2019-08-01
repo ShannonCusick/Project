@@ -1,0 +1,9 @@
+Z:\Godot\project\.mono\temp\bin\Tools\Project.dll
+Z:\Godot\project\.mono\temp\bin\Tools\Project.pdb
+Z:\Godot\project\.mono\temp\obj\Tools\Project.dll
+Z:\Godot\project\.mono\temp\obj\Tools\Project.pdb
+Z:\Godot\project\.mono\temp\obj\Tools\Project.csprojAssemblyReference.cache
+Z:\Godot\project\.mono\temp\obj\Tools\Project.csproj.CoreCompileInputs.cache
+Z:\Godot\project\.mono\temp\bin\Tools\Newtonsoft.Json.dll
+Z:\Godot\project\.mono\temp\bin\Tools\Newtonsoft.Json.xml
+Z:\Godot\project\.mono\temp\obj\Tools\Project.csproj.CopyComplete

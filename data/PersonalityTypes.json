@@ -1,0 +1,123 @@
+{
+	"Personalitytypes": [{
+			"idkey": "1",
+			"name": "Leadership",
+			"adjective": "a Leader",
+			"opposite": "a Follower"
+		},
+		{
+			"idkey": "2",
+			"name": "Intelligence",
+			"adjective": "intelligent",
+			"opposite": "stupid"
+		},
+		{
+			"idkey": "3",
+			"name": "Charisma",
+			"adjective": "charismatic",
+			"opposite": "boring"
+		},
+		{
+			"idkey": "4",
+			"name": "Attractiveness",
+			"adjective": "attractive",
+			"opposite": "ugly"
+		},
+		{
+			"idkey": "5",
+			"name": "Productivity",
+			"adjective": "productive",
+			"opposite": "lazy"
+		},
+		{
+			"idkey": "6",
+			"name": "imagination",
+			"adjective": "creative",
+			"opposite": "unimaginative"
+		},
+		{
+			"idkey": "7",
+			"name": "Confidence",
+			"adjective": "confident",
+			"opposite": "insecure"
+		},
+		{
+			"idkey": "8",
+			"name": "Outgoing",
+			"adjective": "outgoing",
+			"opposite": "shy"
+		},
+		{
+			"idkey": "9",
+			"name": "Persuasion",
+			"adjective": "persuasive",
+			"opposite": "unconvincing"
+		},
+		{
+			"idkey": "10",
+			"name": "Empathy",
+			"adjective": "empathetic",
+			"opposite": "apathetic"
+		},
+		{
+			"idkey": "11",
+			"name": "Adaptability",
+			"adjective": "adaptable",
+			"opposite": "unadaptable"
+		},
+		{
+			"idkey": "12",
+			"name": "Patience",
+			"adjective": "patient",
+			"opposite": "impatient"
+		},
+		{
+			"idkey": "13",
+			"name": "Courage",
+			"adjective": "courageous",
+			"opposite": "fearful"
+		},
+		{
+			"idkey": "14",
+			"name": "Observation",
+			"adjective": "observative",
+			"opposite": "unaware"
+		},
+		{
+			"idkey": "15",
+			"name": "Trust",
+			"adjective": "trusting",
+			"opposite": "distrustful"
+		},
+		{
+			"idkey": "16",
+			"name": "Ambition",
+			"adjective": "ambitious",
+			"opposite": "content"
+		},
+		{
+			"idkey": "17",
+			"name": "Logic",
+			"adjective": "logical",
+			"opposite": "unreasonable"
+		},
+		{
+			"idkey": "18",
+			"name": "Honesty",
+			"adjective": "honest",
+			"opposite": "dishonest"
+		},
+		{
+			"idkey": "19",
+			"name": "Friendly",
+			"adjective": "friendly",
+			"opposite": "mean"
+		},
+		{
+			"idkey": "20",
+			"name": "Cunning",
+			"adjective": "cunning",
+			"opposite": "gullible"
+		}
+	]
+}
