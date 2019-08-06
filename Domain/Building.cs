@@ -10,19 +10,11 @@ namespace Project.Domain
     {
         public int idkey { get; set; }
         public int building_id { get; set; }
-        public int health { get; set; }
-        public int hygene { get; set; }
+        public float health { get; set; }
+        public float hygene { get; set; }
         public int upgrades { get; set; }
-        public IList<BuildingModifiers> Modifiers { get; set; }
-
-        public class BuildingModifiers
-        {
-            public int idkey { get; set; }
-            public string name { get; set; }
-            public float value { get; set; }
-            public int expire { get; set; }
-            public bool discovered { get; set; }
-        }
+        public IList<Modifier> Modifiers { get; set; }
+        
 
     }
 }

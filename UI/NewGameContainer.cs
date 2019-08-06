@@ -98,7 +98,7 @@ public class NewGameContainer : MarginContainer
         var inventorylabel3 = (Label)GetNode("VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer4/inventory3");
         var inventorylabel4 = (Label)GetNode("VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer3/inventory4");
         inventorylabel1.Text = "Raw Food: \n Clean H20: \n Fuel: \n Power: \n Spare Parts: \n Medical: \n Oxygen:";
-        int total_gas = (ship.oxygen + ship.nitrogen + ship.hydrogen + ship.carbondioxide);
+        int total_gas = (ship.oxygen + ship.nitrogen + ship.hydrogen + (int)Math.Round(ship.carbondioxide));
         double oxy_perc = Math.Round(100 * (double)((double)ship.oxygen / (double)total_gas));
         double co_perc = Math.Round(100 * (double)((double)ship.carbondioxide / (double)total_gas));
         inventorylabel2.Text = ship.food + "\n" + ship.water + "\n" + ship.fuel + "\n" + ship.power + "\n" + ship.spare_parts + "\n" + ship.medical + "\n" + oxy_perc+ "%";

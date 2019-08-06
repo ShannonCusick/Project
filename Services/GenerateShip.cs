@@ -41,11 +41,11 @@ namespace Project.Services
                 newbuild.health = 100;
                 newbuild.hygene = 100;
                 newbuild.upgrades = 0;
-                newbuild.Modifiers = new List<Building.BuildingModifiers>();
+                newbuild.Modifiers = new List<Modifier>();
                 ship.Buildings.Add(newbuild);
                 i = i + 1;
             }
-            ship.Modifiers = new List<Ship.GlobalModifiers>();
+            ship.Modifiers = new List<Modifier>();
             ship.Characters = new List<Character>();
             ship.Laws = new List<Ship.Law>();
 

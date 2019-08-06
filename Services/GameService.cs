@@ -68,8 +68,8 @@ namespace Project.Services
                         //36
                         int col = (c.dorm_id % 12) +1;  //1
                         int row = (int)Math.Ceiling((decimal)c.dorm_id / 12); //3
-                        c.pos_x = 744 + ((col * 16) - 8);
-                        c.pos_y = 448 + ((row * 16) - 8);
+                        c.pos_x = 700 + ((col * 16) - 8);
+                        c.pos_y = 220 + ((row * 16) - 8);
                         c.dest_x = c.pos_x;
                         c.dest_y = c.pos_y;
                         Characters.Add(c);
@@ -149,6 +149,24 @@ namespace Project.Services
         public float GetPersonality(Character c, int id)
         {
             return (c.Personality[id].value + c.Personality[id].value_mods);
+        }
+        public BuildingType GetBuildingType(GameState gs,int id)
+        {
+            BuildingType building = new BuildingType();
+            foreach(var b in gs.BuildingTypes)
+            {
+                if (b.idkey == id) return b;
+            }
+            return building;
+        }
+        public Building GetBuilding(GameState gs, int id)
+        {
+            Building building = new Building();
+            foreach (var b in gs.ship.Buildings)
+            {
+                if (b.building_id == id) return b;
+            }
+            return building;
         }
 
     }

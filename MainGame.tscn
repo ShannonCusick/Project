@@ -48,7 +48,6 @@ margin_right = 1880.0
 margin_bottom = 1040.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-editor/display_folded = true
 margin_right = 1870.0
 margin_bottom = 172.0
 
@@ -138,6 +137,23 @@ margin_bottom = 44.0
 custom_fonts/font = SubResource( 4 )
 text = "shipchars"
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 911.0
+margin_right = 1111.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="LaunchButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 200.0
+margin_bottom = 20.0
+text = "Burn"
+
+[node name="ViewBuildings" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 44.0
+text = "Buildings"
+
 [node name="Screenbox" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 176.0
 margin_right = 1870.0
@@ -147,7 +163,7 @@ size_flags_vertical = 3
 custom_constants/separation = 10
 
 [node name="Ship" type="HBoxContainer" parent="VBoxContainer/Screenbox"]
-margin_right = 1200.0
+margin_right = 1550.0
 margin_bottom = 850.0
 rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 3
@@ -176,28 +192,30 @@ icon = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="infoNode" type="VBoxContainer" parent="VBoxContainer/Screenbox"]
-margin_left = 1201.0
-margin_right = 1601.0
-margin_bottom = 700.0
+margin_left = 1560.0
+margin_right = 1860.0
+margin_bottom = 850.0
+grow_horizontal = 0
+grow_vertical = 0
 rect_min_size = Vector2( 300, 700 )
 
 [node name="nameBox" type="Label" parent="VBoxContainer/Screenbox/infoNode"]
-margin_right = 400.0
+margin_right = 300.0
 margin_bottom = 14.0
 
 [node name="jobBox" type="Label" parent="VBoxContainer/Screenbox/infoNode"]
 margin_top = 18.0
-margin_right = 400.0
+margin_right = 300.0
 margin_bottom = 32.0
 
 [node name="moodBox" type="Label" parent="VBoxContainer/Screenbox/infoNode"]
 margin_top = 36.0
-margin_right = 400.0
+margin_right = 300.0
 margin_bottom = 50.0
 
 [node name="infoBox" type="Label" parent="VBoxContainer/Screenbox/infoNode"]
 margin_top = 54.0
-margin_right = 400.0
+margin_right = 300.0
 margin_bottom = 68.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Screenbox"]

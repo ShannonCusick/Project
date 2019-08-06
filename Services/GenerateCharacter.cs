@@ -88,6 +88,7 @@ namespace Project.Services
             NewChar.Modifiers = new List<CharacterModifiers>();
             NewChar.Memories = new List<CharacterMemories>();
             NewChar.Relationships = new List<CharacterRelationship>();
+            NewChar.current_building = 22;
             NewChar.pos_x = 0;
             NewChar.pos_y = 0;
             NewChar.current_task = "dorm";

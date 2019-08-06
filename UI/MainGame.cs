@@ -13,6 +13,8 @@ public class MainGame : MarginContainer
     // private string b = "textvar";
     public static GameService GameService = new GameService();
     public static CharacterDecisions cds = new CharacterDecisions();
+    public static UpdateBuildings ubs = new UpdateBuildings();
+    public static UpdateShip uss = new UpdateShip();
 
     public GameState gs = GameService.LoadGame();
     [Export] public int Speed = 50;
@@ -25,8 +27,9 @@ public class MainGame : MarginContainer
     public bool[] moveNode = new bool[GameService.LoadGame().ship.Characters.Count];
     public Timer _timer = null;
     public int ticks = 0;
+    public static Random r = new Random();
     // void _InputEvent(Viewport viewport, InputEvent @event, int shape_idx)
-    
+
     public void _InputEvent(Viewport viewport, InputEvent @event, int shape_idx)
     {
 
@@ -40,12 +43,8 @@ public class MainGame : MarginContainer
             }
         }
     }
-    public override void _Ready()
+    void updateHud()
     {
-        // Called every time the node is added to the scene.
-        // Initialization here
-
-        _navigation2D = GetNode<Navigation2D>("VBoxContainer/Screenbox/Ship/Navigation2D");
         var charnumlabel = (Label)GetNode("VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2/chars");
         charnumlabel.Text = "Crew Hired: " + (gs.ship.Characters.Count - 3);
         var inventorylabel1 = (Label)GetNode("VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer/inventory1");
@@ -53,15 +52,37 @@ public class MainGame : MarginContainer
         var inventorylabel3 = (Label)GetNode("VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer4/inventory3");
         var inventorylabel4 = (Label)GetNode("VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer3/inventory4");
         inventorylabel1.Text = "Raw Food: \n Clean H20: \n Fuel: \n Power: \n Spare Parts: \n Medical: \n Oxygen:";
-        int total_gas = (gs.ship.oxygen + gs.ship.nitrogen + gs.ship.hydrogen + gs.ship.carbondioxide);
+        int total_gas = (gs.ship.oxygen + gs.ship.nitrogen + gs.ship.hydrogen + (int)Math.Round(gs.ship.carbondioxide));
         double oxy_perc = Math.Round(100 * (double)((double)gs.ship.oxygen / (double)total_gas));
         double co_perc = Math.Round(100 * (double)((double)gs.ship.carbondioxide / (double)total_gas));
-        inventorylabel2.Text = gs.ship.food + "\n" + gs.ship.water + "\n" + gs.ship.fuel + "\n" + gs.ship.power + "\n" + gs.ship.spare_parts + "\n" + gs.ship.medical + "\n" + oxy_perc + "%";
+        inventorylabel2.Text = gs.ship.food + "\n" + Math.Round(gs.ship.water)+ "\n" + gs.ship.fuel + "\n" + gs.ship.power + "\n" + gs.ship.spare_parts + "\n" + gs.ship.medical + "\n" + oxy_perc + "%";
         inventorylabel3.Text = "Cooked Meals: \n Dirty H20: \n Hydrogen: \n Raw Resources: \n Waste Parts: \n Organics: \n C02 : ";
-        inventorylabel4.Text = gs.ship.meals + "\n" + gs.ship.dirty_water + "\n" + gs.ship.hydrogen + "\n " + gs.ship.raw_resources + "\n" + gs.ship.waste_parts + "\n" + gs.ship.organics + "\n" + co_perc + "%";
-        //// generate character sprite nodes ////
+        inventorylabel4.Text = gs.ship.meals + "\n" + Math.Round(gs.ship.dirty_water) + "\n" + gs.ship.hydrogen + "\n " + gs.ship.raw_resources + "\n" + gs.ship.waste_parts + "\n" + Math.Round(gs.ship.organics) + "\n" + co_perc + "%";
+        var destination = (Label)GetNode("VBoxContainer/HBoxContainer/VBoxContainer/destination");
+
+        //make function for data for these vars!
+        string dest = "";
+        if (gs.ship.to_destination == 0) dest = "Orbiting Earth, Sol System \n";
+        if (gs.ship.to_destination == 1) dest = "-- -- --\n";
+        if (gs.ship.to_destination == 2) dest = "Orbiting Sol, Sol System \n";
+        int todays = (8000 - gs.ship.location)/24;
+        if (gs.ship.to_destination == 2) dest = dest + "To Kuiper Belt: "+ todays + " Days";
+        if (gs.ship.to_destination < 2) dest = dest+ "To Kuiper Belt: Infinate Days";
+        destination.Text=dest;
+    }
+    public override void _Ready()
+    {
+        // Called every time the node is added to the scene.
+        // Initialization here
+        updateHud();
+        _navigation2D = GetNode<Navigation2D>("VBoxContainer/Screenbox/Ship/Navigation2D");
+ //// generate character sprite nodes ////
         //base._Ready();
         var navnode = (Node2D)GetNode("VBoxContainer/Screenbox/Ship/Navigation2D/NavigationPolygonInstance/Node2D");
+        var burnButton = (Button)GetNode("VBoxContainer/HBoxContainer/VBoxContainer2/LaunchButton");
+        burnButton.Connect("pressed", this, nameof(_BurnEngines));
+        var buildingsButton = (Button)GetNode("VBoxContainer/HBoxContainer/VBoxContainer2/ViewBuildings");
+        buildingsButton.Connect("pressed", this, nameof(_ViewBuildings));
         Texture spritetex = ResourceLoader.Load("res://char.png") as Texture;
         if (spritetex != null)
         {
@@ -111,6 +132,28 @@ public class MainGame : MarginContainer
         _timer.Start();
 
     }
+    void _BurnEngines()
+    {
+       gs= uss.BurnEngines(gs);
+    }
+    void _ViewBuildings()
+    {
+        var namelabel = (Label)GetNode("/root/NewGameContainer/VBoxContainer/Screenbox/infoNode/nameBox");
+        var joblabel = (Label)GetNode("/root/NewGameContainer/VBoxContainer/Screenbox/infoNode/jobBox");
+        var moodlabel = (Label)GetNode("/root/NewGameContainer/VBoxContainer/Screenbox/infoNode/moodBox");
+        var infolabel = (Label)GetNode("/root/NewGameContainer/VBoxContainer/Screenbox/infoNode/infoBox");
+        string text = "";
+        foreach (var building in gs.ship.Buildings)
+        {
+            var btype = GameService.GetBuildingType(gs, building.building_id);
+            text= btype.name + " health: " + building.health + " hygene: " + building.hygene + " \n" + text;
+        }
+        namelabel.Text = text;
+        joblabel.Text = "";
+        moodlabel.Text = "";
+        infolabel.Text = "";
+
+    }
     void _ClickedChar(int i)
     {
         //Character peep= Newtonsoft.Json.JsonConvert.DeserializeObject<Character>(c);
@@ -133,13 +176,30 @@ public class MainGame : MarginContainer
         namelabel.Text = peep.idkey + " " + peep.name;
         joblabel.Text = JobName;
 
-        string mood = "Excercise: " + gsi.GetNeed(peep, NeedsIdx.Excercize) + " Safety: " + gsi.GetNeed(peep, NeedsIdx.Safety)
-            + " Food: " + gsi.GetNeed(peep, NeedsIdx.Food) + " Water: " + gsi.GetNeed(peep, NeedsIdx.Water) + " Hygene: " + gsi.GetNeed(peep, NeedsIdx.Hygene)
-            + " Comfort: " + gsi.GetNeed(peep, NeedsIdx.Comfort) + " Sleep: " + gsi.GetNeed(peep, NeedsIdx.Sleep) +
-            " Bio: " + gsi.GetNeed(peep, NeedsIdx.Bio) + " Social: " + gsi.GetNeed(peep, NeedsIdx.Social);
+        string mood = "\n Excercise: " + Math.Round(gsi.GetNeed(peep, NeedsIdx.Excercize)) + " Safety: " + Math.Round(gsi.GetNeed(peep, NeedsIdx.Safety))
+            + " Food: " + Math.Round(gsi.GetNeed(peep, NeedsIdx.Food)) + " Water: " + Math.Round(gsi.GetNeed(peep, NeedsIdx.Water)) + " Hygene: " + Math.Round(gsi.GetNeed(peep, NeedsIdx.Hygene))
+            + " Comfort: " + Math.Round(gsi.GetNeed(peep, NeedsIdx.Comfort)) + " Sleep: " + Math.Round(gsi.GetNeed(peep, NeedsIdx.Sleep)) +
+            " Bio: " + Math.Round(gsi.GetNeed(peep, NeedsIdx.Bio)) + " Social: " + Math.Round(gsi.GetNeed(peep, NeedsIdx.Social));
         moodlabel.Text = mood;
 
-        string info = "Current task: " + peep.current_task + " Mood: "+peep.mood;
+        string info = "Current task: " + peep.current_task +"\n location: "+peep.pos_x+","+peep.pos_y+" destination: "+ peep.dest_x + ","+peep.dest_y;
+        info = info + " \n Mood: " + peep.mood + " Health: " + cds.getHealth(peep) + "\n  \n Relationships: \n ";
+        int x = 0;
+        foreach (var rel in peep.Relationships)
+        {
+            info = info + rel.otherChar + " " + rel.value + "("+rel.lastAction+"),";
+            x++;
+            if (x % 2==0) info = info + " \n ";
+        }
+        info = info + "\n \n Personality: \n";
+        info = info + "Adaptability: " + gsi.GetPersonality(peep, PersonalityIdx.Adaptability) + " Ambition: " + gsi.GetPersonality(peep, PersonalityIdx.Ambition) + " Attractiveness:" + gsi.GetPersonality(peep, PersonalityIdx.Attractiveness) + "\n";
+        info = info + "Charisma: " + gsi.GetPersonality(peep, PersonalityIdx.Charisma) + " Confidence: " + gsi.GetPersonality(peep, PersonalityIdx.Confidence) + " Courage: " + gsi.GetPersonality(peep, PersonalityIdx.Courage) + "\n";
+        info = info + "Creativity: " + gsi.GetPersonality(peep, PersonalityIdx.Creativity) + " Cunning: " + gsi.GetPersonality(peep, PersonalityIdx.Cunning) + " Empathy:" + gsi.GetPersonality(peep, PersonalityIdx.Empathy) + "\n";
+        info = info + "Friendly: " + gsi.GetPersonality(peep, PersonalityIdx.Friendly) + " Honesty:" + gsi.GetPersonality(peep, PersonalityIdx.Honesty) + " Intelligence: " + gsi.GetPersonality(peep, PersonalityIdx.Intelligence) + "\n";
+        info = info + "Leadership: " + gsi.GetPersonality(peep, PersonalityIdx.Leadership) + " Logic:" + gsi.GetPersonality(peep, PersonalityIdx.Logic) + " Observation:" + gsi.GetPersonality(peep, PersonalityIdx.Observation) + "\n";
+        info = info + " Outgoing: " + gsi.GetPersonality(peep, PersonalityIdx.Outgoing) +" Patience: " + gsi.GetPersonality(peep, PersonalityIdx.Patience) +" Persuasion: " + gsi.GetPersonality(peep, PersonalityIdx.Persuasion) + "\n";
+        info = info + " Productivity: " + gsi.GetPersonality(peep, PersonalityIdx.Productivity) + " Trust: " + gsi.GetPersonality(peep,PersonalityIdx.Trust) + "\n";
+
         infolabel.Text = info;
     }
     void onTimerTimeout()
@@ -150,28 +210,69 @@ public class MainGame : MarginContainer
             Character peep = c;
             GameState prevgs = gs;
             gs = cds.SocialCheck(gs, peep);
-            if(gs != prevgs || gs.SocialQueue.Count==0)
-            {
-                gs = cds.addSocial(gs, peep);
-                if (gs.SocialQueue.Count > 0)
-                {
-                    //GD.Print(gs.SocialQueue[0].Subject);
-                }
-            }
             if (c.idkey % 5 == ticks)
             {
+                gs = cds.addSocial(gs, peep);
                 gs = cds.whatToDo(gs, peep);
             }
             //GD.Print(peep.current_task);
             
             i = i + 1;
         }
-        if (ticks == 5)
+
+        if (gs.SocialQueue.Count > 0)
+        {
+           // GD.Print(gs.SocialQueue[0].Subject);
+        }
+        if (ticks == 6)
         {
             ticks = 0;
         }else
         {
             ticks = ticks + 1;
+        }
+        if (ticks == 6)
+        {
+            Modifier mod = uss.GetModifier(gs, "in_burn");
+            var burnButton = (Button)GetNode("VBoxContainer/HBoxContainer/VBoxContainer2/LaunchButton");
+            if (mod != null)
+            { 
+                gs = uss.ShipBurn(gs,mod);
+                if (mod.expire <= 10 && mod.expire > 5) burnButton.Text = "Preparing for Burn in " + (mod.expire - 5);
+                if (mod.expire <= 5) burnButton.Text = "--Burning-- "+ mod.expire;
+            }else
+            {
+                burnButton.Text = "Burn";
+            }
+            gs = uss.TickUpdate(gs);
+        }
+        //foreach (var sq in gs.SocialQueue)
+        //{
+        //    GD.Print(sq.Subject);
+        //}
+        if (ticks == 1)
+        {
+            gs = ubs.TickUpdate(gs);
+            //Building building = GameService.GetBuilding(gs, 12);
+            //GD.Print("building" + building.health);
+            //GD.Print("# of mods" + building.Modifiers.Count);
+            //var mod = ubs.GetModifier(building, "dirty_plates");
+            //if (mod != null) GD.Print("dirty plates=" + mod.value);
+            //foreach (var b in gs.ship.Buildings)
+            //{
+            //    if (b.building_id == 12)
+            //    {
+            //        GD.Print(b.hygene + " hyg ");
+            //        GD.Print(b.health + " health ");
+            //        foreach (var m in b.Modifiers)
+            //        {
+            //            GD.Print(m.name + b.building_id + " " + m.value);
+            //        }
+            //    }
+            //}
+            if (gs.ship.water > 10000) gs.ship.water = 10000;
+            if (gs.ship.dirty_water < 0) gs.ship.dirty_water = 0;
+            updateHud();
         }
     }
     public override void _Process(float delta)
@@ -198,6 +299,8 @@ public class MainGame : MarginContainer
                 loc.y = peep.dest_y;
                 MoveCharacter(Speed * delta,_sprite[i],i);
                 UpdateNavigationPath(_sprite[i].Position, loc,i);
+                peep.pos_x = (int) Math.Round(_sprite[i].Position.x);
+                peep.pos_y = (int) Math.Round(_sprite[i].Position.y);
             }
             characters.Add(peep);
            // _sprite[i].m

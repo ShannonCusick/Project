@@ -74,6 +74,7 @@ namespace Project.Domain
         public IList<CharacterMemories> Memories { get; set; }
         public IList<CharacterRelationship> Relationships { get; set; }
         //
+        public int current_building { get; set; }
         public int pos_x { get; set; }
         public int pos_y { get; set; }
         public string current_task { get; set; }
@@ -124,6 +125,7 @@ namespace Project.Domain
         public int idkey { get; set; }
         public int otherChar { get; set; }
         public float value { get; set; }
+        public string lastAction { get; set; }
     }
 
 }

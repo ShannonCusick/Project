@@ -61,6 +61,7 @@
     <Compile Include="Domain\GameState.cs" />
     <Compile Include="Domain\Interfaces.cs" />
     <Compile Include="Domain\JobType.cs" />
+    <Compile Include="Domain\Modifier.cs" />
     <Compile Include="Domain\PersonalityType.cs" />
     <Compile Include="Domain\Result.cs" />
     <Compile Include="Domain\Ship.cs" />
@@ -76,8 +77,11 @@
     <Compile Include="Services\GameDataService.cs" />
     <Compile Include="Services\GenerateCharacter.cs" />
     <Compile Include="Services\GenerateShip.cs" />
+    <Compile Include="Services\Jobs.cs" />
     <Compile Include="Services\ModifierService.cs" />
     <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\UpdateBuildings.cs" />
+    <Compile Include="Services\UpdateShip.cs" />
     <Compile Include="UI\CharName.cs" />
     <Compile Include="UI\CharSprite.cs" />
     <Compile Include="UI\Continue.cs" />

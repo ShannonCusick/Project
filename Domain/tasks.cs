@@ -24,4 +24,16 @@ namespace Project.Domain
     //cynical_intro - cunning
     //flirtatious_intro charisma
 
+
+
+    //work
+    //complain_about_work
+    //enthuse_about_work
+    //offer_advice
+    //ask_advice
+
+    //agree
+    //dissagree
+    //thank
+    //give_advice
 }
