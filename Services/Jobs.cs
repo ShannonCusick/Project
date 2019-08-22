@@ -138,6 +138,18 @@ namespace Project.Services
                 }
 
             }
+            if(job_id== 33)
+            {
+                //bridge technician
+                int total_gas = (gs.ship.oxygen + gs.ship.nitrogen + gs.ship.hydrogen + (int)Math.Round(gs.ship.carbondioxide));
+                double oxy_perc = 100 * (double)((double)gs.ship.oxygen / (double)total_gas);
+                if (oxy_perc > 26)
+                {
+                    //drain oxygen
+                    gs.ship.oxygen = gs.ship.oxygen - 1000;
+                }
+
+            }
             if (job_id == 38)
             {
                 //global mechanic
@@ -146,7 +158,7 @@ namespace Project.Services
             }
 
 
-                if (building.health > 100) building.health = 100;
+           if (building.health > 100) building.health = 100;
            if (building.hygene > 100) building.hygene = 100;
             ////////end updates///////
             List<Building> buildings = new List<Building>();

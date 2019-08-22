@@ -13,6 +13,74 @@ namespace Project.Services
         public static UpdateShip uss = new UpdateShip();
         public static Random r = new Random();
 
+        public IList<Modifier> AddModifier(GameState gs, Character peep, string modifier, float value, int expires, bool discovered, bool AddValue)
+        {
+            var found = false;
+
+            List<Modifier> mods = new List<Modifier>();
+            foreach (var mod in peep.Modifiers)
+            {
+                if (mod.name == modifier)
+                {
+                    //update current
+                    if (AddValue == false)
+                    {
+                        mod.value = value;
+                    }
+                    else
+                    {
+                        mod.value = mod.value + value;
+                    }
+                    if (mod.value < 0) mod.value = 0;
+                    mod.expire = expires;
+                    found = true;
+                }
+                mods.Add(mod);
+            }
+            if (found == false)
+            {
+                //or add
+                Modifier mod = new Modifier();
+                mod.name = modifier;
+                mod.value = value;
+                mod.expire = expires;
+                mod.discovered = discovered;
+                mods.Add(mod);
+            }
+            return mods;
+        }
+
+        public List<Character> UpdateModifiers(GameState gs)
+        {
+            //add string modifier if you want to remove mod directly.
+            List<Character> characters = new List<Character>();
+            foreach (var peep in gs.ship.Characters)
+            {
+                var c = peep;
+                List<Modifier> mods = new List<Modifier>();
+                foreach (var mod in c.Modifiers)
+                {
+                    if (mod.expire == 0) continue;
+                    if (mod.expire > 0) mod.expire = mod.expire - 1;
+                    if (mod.expire != 0)
+                    {
+                        mods.Add(mod);
+                    }
+                }
+                c.Modifiers = mods;
+                characters.Add(c);
+            }
+            return characters;
+        }
+        public Modifier GetModifier(Character peep, string modifier)
+        {
+            Modifier m = null;
+            foreach (var mod in peep.Modifiers)
+            {
+                if (mod.name == modifier) return mod;
+            }
+            return m;
+        }
         public Character getCharacter(GameState gs, int CharId)
         {
             foreach (var peep in gs.ship.Characters)
@@ -66,6 +134,19 @@ namespace Project.Services
         }
         public Character goToNeed(GameState gs, Character peep, int need)
         {
+            if (need == 100) //bar
+            {
+                var bt = gsi.GetBuildingType(gs, 21);
+                if (bt != null)
+                {
+                    peep.dest_x = bt.def_x - 40;
+                    peep.dest_y = bt.def_y - 220;
+                    peep.current_task = "bar";
+                    peep.current_building = 24;
+                }
+
+            }
+
             if (need == NeedsIdx.Bio)
             {
                 var bt = gsi.GetBuildingType(gs, 24);
@@ -238,6 +319,13 @@ namespace Project.Services
             gs.ship.Characters = characters;
             return gs;
         }
+        public Character SpecialTasks(GameState gs, Character peep)
+        {
+            //go to bar
+
+
+            return peep;
+        }
         public GameState whatToDo(GameState gs, Character peep)
         {
             gs.ship.oxygen = gs.ship.oxygen - 1;
@@ -270,6 +358,7 @@ namespace Project.Services
             bool hasToDo = false;
             var mood = getMood(gs, peep);
             float adaptability = moodMod(mood, peep.Personality[PersonalityIdx.Adaptability].value);
+            
             
             //update needs based on current activity
             List<CharacterNeeds> CNS = new List<CharacterNeeds>();
@@ -370,7 +459,7 @@ namespace Project.Services
                     need.value = need.value - .015f;
                     if (peep.current_task == "social")
                     {
-                        need.value = need.value + .025f;
+                        need.value = need.value + .25f;
                         fullfilling = true;
                         gs.ship.Buildings = ubs.UpdateHygene(gs, peep.current_building, .5f);
                     }
@@ -407,8 +496,23 @@ namespace Project.Services
             {
                 Building building = gsi.GetBuilding(gs, peep.current_building);
                 gs = js.performJob(gs, peep, job, building);
+                peep.stress = peep.stress - (gsi.GetPersonality(peep, PersonalityIdx.Courage) + gsi.GetPersonality(peep, PersonalityIdx.Confidence) / 10)/10;
+                if (building.hygene < 50) peep.stress = peep.stress + .1f;
+                if (building.health < 60) peep.anxiety = peep.anxiety + (60- building.health)/200;
                 if ((peep.job_id == 44 || peep.job_id == 38) && r.Next(0, 4) == 0) peep.current_task = "reset";
             }
+            ///////find other needs.
+            if (peep.current_task == "bar")
+            {
+                peep = SpecialTasks(gs, peep);
+            }
+            if (!hasToDo && (peep.stress < 5 || peep.anxiety < 5))
+            {
+                //100 = bar;
+               peep = goToNeed(gs, peep, 100);
+               hasToDo = true;
+            }
+
             //go to work GameService gsi = new GameService();
             if (job != null && !hasToDo && !fullfilling && peep.current_task !="work")
             {

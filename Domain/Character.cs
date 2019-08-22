@@ -70,7 +70,7 @@ namespace Project.Domain
         public IList<CharacterPersonality> Personality{ get; set; }
         public IList<CharacterNeeds> Needs{ get; set; }
         public IList<CharacterWants> Wants { get; set; }
-        public IList<CharacterModifiers> Modifiers { get; set; }
+        public IList<Modifier> Modifiers { get; set; }
         public IList<CharacterMemories> Memories { get; set; }
         public IList<CharacterRelationship> Relationships { get; set; }
         //
@@ -101,14 +101,6 @@ namespace Project.Domain
         public int idkey { get; set; }
         public string name { get; set; }
         public float value { get; set; }
-    }
-    public class CharacterModifiers
-    {
-        public int idkey { get; set; }
-        public string name { get; set; }
-        public float value { get; set; }
-        public int expire { get; set; }
-        public bool discovered { get; set; }
     }
     public class CharacterMemories
     {
